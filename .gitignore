@@ -1,0 +1,7 @@
+.nuget
+.vs
+bin
+obj
+*.user
+*.suo
+/Assemble.me/3dsModelsTemp

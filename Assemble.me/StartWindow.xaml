@@ -1,0 +1,9 @@
+﻿<NavigationWindow x:Class="Assemble.me.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Welcome to Assemble.me" Height="480.806" Width="622.127"
+        ResizeMode="NoResize" Source="LoginPage.xaml" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="icos/background.png"></ImageBrush>
+    </Window.Background>
+</NavigationWindow>

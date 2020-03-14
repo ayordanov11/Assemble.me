@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Wpf.Interop.DirectX-x64</id>
+    <version>0.9.0-beta-22856</version>
+    <title>Microsoft.Wpf.Interop.DirectX-x64</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>https://github.com/Microsoft/WPFDXInterop/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Microsoft/WPFDXInterop</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=532657</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Microsoft.Wpf.Interop.DirectX.D3D11Image is a version of D3DImage that supports DirectX 11 or DirectX 10. For more information, check out the project here: https://github.com/Microsoft/WPFDXInterop</description>
+    <summary>Microsoft.Wpf.Interop.DirectX provides a new implementation of D3DImage that enables you to seamlessly interop with DirectX 10 or 11 content in your WPF application.</summary>
+    <copyright>© Microsoft Corporation. All rights reserved</copyright>
+    <tags>WPF DirectX D3DImage D3D11Image DirectX11 DirectX10</tags>
+  </metadata>
+</package>

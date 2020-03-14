@@ -1,0 +1,22 @@
+﻿<Page x:Class="Assemble.me.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Assemble.me"
+      mc:Ignorable="d" 
+      d:DesignHeight="480.806" d:DesignWidth="622.127"
+      Title="RegisterPage">
+    <Grid x:Name="registerGrid">
+        <Label Content="First name :" Foreground="White" HorizontalAlignment="Left" Margin="98,67,0,0"  VerticalAlignment="Top" FontSize="19"/>
+        <Label Content="Last name :" Foreground="White" HorizontalAlignment="Left" Margin="98,131,0,0"  VerticalAlignment="Top" FontSize="19"/>
+        <Label Content="Email :" Foreground="White" HorizontalAlignment="Left" Margin="98,202,0,0"  VerticalAlignment="Top" FontSize="19"/>
+        <Label Content="Phone :" Foreground="White" HorizontalAlignment="Left" Margin="98,267,0,0"  VerticalAlignment="Top" FontSize="19"/>
+        <Label Content="Personal Details" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" Width="251" />
+        <TextBox x:Name="FName" HorizontalAlignment="Left" Height="34" Margin="234,67,0,0" Text="" VerticalAlignment="Top" Width="283" FontSize="19" />
+        <TextBox x:Name="LName" HorizontalAlignment="Left" Height="34" Margin="234,134,0,0" Text="" VerticalAlignment="Top" Width="283" FontSize="19"/>
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Height="34" Margin="234,202,0,0" Text="" VerticalAlignment="Top" Width="283" FontSize="19"/>
+        <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="37" Margin="234,267,0,0" Text="" VerticalAlignment="Top" Width="283" FontSize="19"/>
+        <Button Content="Register &#xE1E2;" FontSize="20" FontFamily="Segoe UI Symbol" Background="FloralWhite" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="142" Height="51" Click="Button_Click" Margin="234,0,246,23" />
+    </Grid>
+</Page>

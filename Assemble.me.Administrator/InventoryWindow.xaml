@@ -1,0 +1,28 @@
+﻿<Window x:Class="Assemble.me.Administrator.InventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assemble.me.Administrator"
+        mc:Ignorable="d"
+        Title="Inventory" Height="642.544" Width="652.172" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="2,0,0,0" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="14,20,0,0" VerticalAlignment="Top" Height="574" Width="313" SelectionChanged="dataGrid_SelectionChanged"/>
+        <Button x:Name="btnAvailable" Content="Available Parts" HorizontalAlignment="Left" Margin="542,515,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btnAvailable_Click" FlowDirection="RightToLeft"/>
+        <Button x:Name="btnOutOfStock" Content="Parts out&#xa;of stock" HorizontalAlignment="Left" Margin="353,515,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btnOutOfStock_Click" FlowDirection="RightToLeft"/>
+        <Button x:Name="btnAdd" Content="Add to cart" HorizontalAlignment="Left" Margin="436,129,0,0" VerticalAlignment="Top" Width="97" Height="47" Click="btnAdd_Click"/>
+        <Label x:Name="lblPart" Content="Part no: " HorizontalAlignment="Left" Margin="384,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.426,0.654"/>
+        <Label x:Name="lblQuantity" Content="Quantity:" HorizontalAlignment="Left" Margin="384,74,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbQuantity" HorizontalAlignment="Left" Height="23" Margin="470,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberValidationTextBox"/>
+        <Label x:Name="lblNr" Content="" HorizontalAlignment="Left" Margin="470,33,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lable" Content="Cart" HorizontalAlignment="Left" Margin="466,213,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="359,20,0,0" VerticalAlignment="Top" Width="261"/>
+        <ListBox x:Name="lbCart" HorizontalAlignment="Left" Height="170" Margin="371,244,0,0" VerticalAlignment="Top" Width="236"/>
+        <Button x:Name="btnOrder" Content="Order Now!" HorizontalAlignment="Left" Margin="436,439,0,0" VerticalAlignment="Top" Width="97" Height="47" Click="mouse_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="286" Margin="359,213,0,0" VerticalAlignment="Top" Width="261"/>
+        <Button x:Name="btnAllParts" Content="All Parts" HorizontalAlignment="Left" Margin="447,515,0,0" VerticalAlignment="Top" Width="86" Height="79" Click="btnAllParts_Click"/>
+    </Grid>
+</Window>

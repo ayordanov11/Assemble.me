@@ -1,0 +1,68 @@
+﻿<Window x:Class="Assemble.me.Administrator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assemble.me.Administrator"
+        mc:Ignorable="d"
+        Title="Assemble.me Administrator" Height="702" Width="998" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Name="myGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="491*"/>
+            <ColumnDefinition Width="309*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Name="topGrid" HorizontalAlignment="Stretch" Height="48" Margin="10,10,19,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.ColumnSpan="2" IsEnabled="True">
+            <Button x:Name="btnEnableRandomOrders" Content="Enable Random Orders" HorizontalAlignment="Left" Height="35" Margin="10,6,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnEnableRandomOrders_Click"/>
+            <Button x:Name="btnDisableRandomOrders" Content="Disable Random Orders" HorizontalAlignment="Left" Height="35" Margin="136,6,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnDisableRandomOrders_Click" IsEnabled="False"/>
+            <Button x:Name="btnTimeRatioSettings" Content="Time Ratio Settings" HorizontalAlignment="Left" Height="35" Margin="265,6,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnTimeRatioSettings_Click"/>
+            <Button x:Name="btnClearProcessed" Content="Clear&#xD;&#xA;processed orders" HorizontalAlignment="Left" Height="35" Margin="833,0,0,7" VerticalAlignment="Bottom" Width="112" IsDefault="True" FontSize="10" IsEnabled="True" Click="btnClearProcessed_Click"/>
+
+            <Grid x:Name="setRatioGrid" HorizontalAlignment="Left" Height="40" Margin="382,10,0,0" VerticalAlignment="Top" Width="430" Visibility="Hidden">
+                <Slider x:Name="sliderTimeRatio" HorizontalAlignment="Left" Height="17" Margin="10,10,0,0" VerticalAlignment="Top" Width="187" TickFrequency="5" SmallChange="5" Maximum="60" AutoToolTipPlacement="TopLeft"/>
+                <Button x:Name="btnTimeRatioSet" Content="Set Time Ratio" HorizontalAlignment="Left" Height="21" Margin="214,9,0,0" VerticalAlignment="Top" Width="84" IsDefault="True" FontSize="10" Click="btnTimeRatioSet_Click"/>
+            </Grid>
+            <Button x:Name="btnClearUnprocessedOrders" Content="Clear &#xD;&#xA;unprocessed orders" HorizontalAlignment="Left" Height="35" Margin="700,6,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" IsEnabled="True" Click="btnClearUnprocessedOrders_Click"/>
+        </Grid>
+        <Grid Name="leftGrid" HorizontalAlignment="Stretch" Height="520" Margin="10,77,130,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+            <ListBox x:Name="listBoxOrders" HorizontalAlignment="Stretch" Height="472" Margin="10,38,10,0" VerticalAlignment="Top" SelectionChanged="listBoxOrders_SelectionChanged"/>
+            <Label x:Name="label" Content="Orders" HorizontalAlignment="Stretch" Margin="203,2,10,0" VerticalAlignment="Top" FontSize="16"/>
+        </Grid>
+        <Grid Name="rightGrid" HorizontalAlignment="Stretch" Height="520" Margin="498,77,19,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.ColumnSpan="2">
+            <Label x:Name="label1" Content="Details" HorizontalAlignment="Stretch" Margin="184,5,7,0" VerticalAlignment="Top" FontSize="16"/>
+            <StackPanel HorizontalAlignment="Left" Height="100" Margin="100,192,0,0" VerticalAlignment="Top" Width="100"/>
+            <GroupBox x:Name="OrderGroupBox" Header="Order" HorizontalAlignment="Left" Margin="23,66,0,0" VerticalAlignment="Top" Height="146" Width="427">
+                <Label x:Name="label2" Content="Order number: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            </GroupBox>
+            <Label x:Name="label3" Content="Created at: " HorizontalAlignment="Left" Margin="39,120,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblProcessed" Content="Processed at: " HorizontalAlignment="Left" Margin="38,94,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+            <Label x:Name="label4" Content="Expected at: " HorizontalAlignment="Left" Margin="39,148,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label5" Content="Priority: " HorizontalAlignment="Left" Margin="39,177,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblOrderNr" Content="" HorizontalAlignment="Left" Margin="139,92,0,0" VerticalAlignment="Top" />
+            <Label x:Name="lblOrderCreatedDate" Content="" HorizontalAlignment="Left" Margin="139,120,0,0" VerticalAlignment="Top" />
+            <Label x:Name="lblOrderProcessedDate" Content="" HorizontalAlignment="Left" Margin="139,94,0,0" VerticalAlignment="Top" Visibility="Hidden" />
+            <Label x:Name="lblOrderPriority" Content="" HorizontalAlignment="Left" Margin="139,177,0,0" VerticalAlignment="Top" />
+            <Label x:Name="lblOrderExpectedDate" Content="" HorizontalAlignment="Left" Margin="139,148,0,0" VerticalAlignment="Top" />
+            <GroupBox x:Name="CustomerGroupBox" Header="Customer" HorizontalAlignment="Left" Margin="23,248,0,0" VerticalAlignment="Top" Height="122" Width="427">
+                <Label x:Name="label6" Content="Name: " HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top"/>
+            </GroupBox>
+            <Label x:Name="label7" Content="Email: " HorizontalAlignment="Left" Margin="39,302,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label8" Content="Phone: " HorizontalAlignment="Left" Margin="39,333,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblCustName" Content="" HorizontalAlignment="Left" Margin="139,275,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblCustPhone" Content="" HorizontalAlignment="Left" Margin="139,332,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblCustEmail" Content="" HorizontalAlignment="Left" Margin="139,302,0,0" VerticalAlignment="Top"/>
+            <GroupBox x:Name="ModelGroupBox" Header="Model" HorizontalAlignment="Left" Margin="23,402,0,0" VerticalAlignment="Top" Height="98" Width="427">
+                <Label x:Name="label9" Content="Name: " HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top"/>
+            </GroupBox>
+            <Label x:Name="label10" Content="Price: " HorizontalAlignment="Left" Margin="38,455,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblModelPrice" Content="" HorizontalAlignment="Left" Margin="100,455,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblModelName" Content="" HorizontalAlignment="Left" Margin="100,429,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Name="bottomGrid" HorizontalAlignment="Stretch" Height="48" Margin="10,613,19,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.ColumnSpan="2">
+            <Button x:Name="btnInventory" Content="Inventory" HorizontalAlignment="Left" Height="35" Margin="841,7,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnInventory_Click" />
+            <Button x:Name="btnChangePriority" Content="Change Priority" HorizontalAlignment="Left" Height="35" Margin="148,7,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnChangePriority_Click"/>
+            <Button x:Name="btnViewAllOrders" Content="View all orders" HorizontalAlignment="Left" Height="35" Margin="288,7,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnViewAllOrders_Click"/>
+            <Button x:Name="btnViewProcessedOrders" Content="View processed orders" HorizontalAlignment="Left" Height="35" Margin="435,7,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnViewProcessedOrders_Click"/>
+            <Button x:Name="btnProcessOrder" Content="Process Order" HorizontalAlignment="Left" Height="35" Margin="10,7,0,0" VerticalAlignment="Top" Width="112" IsDefault="True" FontSize="10" Click="btnProcessOrder_Click"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{526CE1C1-BE5A-44EA-8E1A-2D9475FD19DB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Assemble.me</RootNamespace>
+    <AssemblyName>Assemble.me</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assemble.me.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Assemble.me.Library.1.3.3\lib\net452\Assemble.me.Library.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dropbox.Api">
+      <HintPath>..\packages\Dropbox.Api.4.2.4\lib\net45\Dropbox.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="HelixToolkit">
+      <HintPath>..\packages\HelixToolkit.2015.1.715\lib\portable-net4+sl4+wp71+win8\HelixToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="HelixToolkit.Wpf">
+      <HintPath>..\packages\HelixToolkit.Wpf.2015.1.715\lib\net45\HelixToolkit.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RandomNameGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RandomNameGenerator.1.0.4\lib\RandomNameGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connector.cs" />
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="DropBoxGui.xaml.cs">
+      <DependentUpon>DropBoxGui.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListItems.cs" />
+    <Compile Include="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelNameDialog.xaml.cs">
+      <DependentUpon>ModelNameDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartWindow.xaml.cs">
+      <DependentUpon>StartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Path.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DropBoxGui.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModelNameDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="3dsModels\Chassis\Cabrio.3ds" />
+    <None Include="3dsModels\Chassis\Cabrio_Blue.3ds" />
+    <None Include="3dsModels\Chassis\Cabrio_Gray.3ds" />
+    <None Include="3dsModels\Chassis\Cabrio_Red.3ds" />
+    <None Include="3dsModels\Chassis\Electric.3ds" />
+    <None Include="3dsModels\Chassis\Jeep.3ds" />
+    <None Include="3dsModels\Chassis\Jeep_Blue.3ds" />
+    <None Include="3dsModels\Chassis\Jeep_Gray.3ds" />
+    <None Include="3dsModels\Chassis\Jeep_Red.3ds" />
+    <None Include="3dsModels\Chassis\Minivan.3ds" />
+    <None Include="3dsModels\Chassis\Minivan_Blue.3ds" />
+    <None Include="3dsModels\Chassis\Minivan_Gray.3ds" />
+    <None Include="3dsModels\Chassis\Minivan_Red.3ds" />
+    <None Include="3dsModels\Chassis\Sedan.3ds" />
+    <None Include="3dsModels\Chassis\Sedan_Blue.3ds" />
+    <None Include="3dsModels\Chassis\Sedan_Gray.3ds" />
+    <None Include="3dsModels\Chassis\Sedan_Red.3ds" />
+    <None Include="3dsModels\Chassis\Sport.3ds" />
+    <None Include="3dsModels\Chassis\Sport_Blue.3ds" />
+    <None Include="3dsModels\Chassis\Sport_Gray.3ds" />
+    <None Include="3dsModels\Chassis\Sport_Red.3ds" />
+    <None Include="3dsModels\Engine\Diesel.3ds" />
+    <None Include="3dsModels\Engine\Electric.3ds" />
+    <None Include="3dsModels\Engine\Petrol.3ds" />
+    <None Include="3dsModels\Interior\Leather.3ds" />
+    <None Include="3dsModels\Interior\Textile.3ds" />
+    <None Include="3dsModels\Tires\14.3ds" />
+    <None Include="3dsModels\Tires\16.3DS" />
+    <None Include="3dsModels\Tires\18.3ds" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Jeep.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\18 Tires.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\14 Tires.PNG" />
+    <Resource Include="icos\Leather.png" />
+    <Resource Include="icos\Petrol.PNG" />
+    <Resource Include="icos\Textile.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Minivan.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Sedan.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\16 Tires.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Sport.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\backgroundMain.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Air.png" />
+    <Resource Include="icos\Automatic.png" />
+    <Resource Include="icos\Average.png" />
+    <Resource Include="icos\Cabrio.png" />
+    <Resource Include="icos\Gas.png" />
+    <Resource Include="icos\Hydraulic.png" />
+    <Resource Include="icos\Manual.png" />
+    <Resource Include="icos\MegaPower.png" />
+    <Resource Include="icos\Small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\4x4.png" />
+    <Resource Include="icos\AC.png" />
+    <Resource Include="icos\Button Starter.png" />
+    <Resource Include="icos\GPS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Audio System.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Cruise Control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Parktronic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\email.png" />
+    <Resource Include="icos\id.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Electric.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\14 Rims.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\16 Rims.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\18 Rims.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icos\Diesel.PNG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

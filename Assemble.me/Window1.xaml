@@ -1,0 +1,318 @@
+﻿<Window x:Class="Assemble.me.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:h="http://helix-toolkit.org/wpf"
+        Title="Create Your Model" Height="554.7" Width="869.8" SizeChanged="Window_SizeChanged" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="icos/backgroundMain.jpg"></ImageBrush>
+    </Window.Background>
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="New_Click" />
+        <CommandBinding Command="Open" Executed="Open_Click" />
+        <CommandBinding Command="Save" Executed="Save_Click" />
+        <CommandBinding Command="Close" Executed="Exit_Click" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="N" Modifiers="Control" Command="New" />
+        <KeyBinding Key="O" Modifiers="Control" Command="Open" />
+        <KeyBinding Key="S" Modifiers="Control" Command="Save" />
+        <KeyBinding Key="E" Modifiers="Control" Command="Close" />
+    </Window.InputBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New"  Click="New_Click">
+                <MenuItem.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Create new model.</TextBlock>
+                            <TextBlock>Hot key is Ctrl + N</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </MenuItem.ToolTip>
+                </MenuItem>
+                <MenuItem Header="_Open" Click="Open_Click">
+                    <MenuItem.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Open a model.</TextBlock>
+                                <TextBlock>Hot key is Ctrl + O</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </MenuItem.ToolTip>
+                </MenuItem>
+                <MenuItem Header="_Save" Click="Save_Click">
+                    <MenuItem.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Save model.</TextBlock>
+                                <TextBlock>Hot key is Ctrl + S</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </MenuItem.ToolTip>
+                </MenuItem>
+                <MenuItem Header="_Exit" Click="Exit_Click">
+                    <MenuItem.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Exit from application.</TextBlock>
+                                <TextBlock>Hot key is Ctrl + E</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </MenuItem.ToolTip>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <h:HelixViewport3D Name="viewport3D" ZoomExtentsWhenLoaded="True" PreviewMouseWheel="viewport3D_PreviewMouseWheel" ShowCameraTarget="False">
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <Model3DGroup x:Name="Scene"></Model3DGroup>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <h:SunLight/>
+            </h:HelixViewport3D>
+            
+            <Button x:Name="Selected_PartsBtn" FontFamily="Segoe UI Symbol" FontSize="15"  Content="&#xE107; Remove Part" Width="120" Height="35" ContextMenuService.IsEnabled="False" VerticalAlignment="Top" Click="Selected_PartsBtn_OnClick">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="MenuBtn">
+                    </ContextMenu>
+                </Button.ContextMenu>
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Remove part</TextBlock>
+                            <TextBlock>Click to get the list of parts and remove the desired one.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+
+            <Button x:Name="Clear_Model" Content="&#xE106; Clear Model" Background="FloralWhite" Opacity="0.7" FontFamily="Segoe UI Symbol" HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Width="87" Height="34" Click="btnClear_Click">
+            <Button.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                            <TextBlock FontWeight="Bold">Clear model</TextBlock>
+                            <TextBlock>Clears the displayed model.</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+            </Button>
+            <Button x:Name="Reset_Camera" Content="&#xE149; Reset Camera" Background="FloralWhite" Opacity="0.7" FontFamily="Segoe UI Symbol" HorizontalAlignment="Left" Margin="106,10,0,0" VerticalAlignment="Top" Width="95" Height="34" Click="Reset_Camera_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Reset camera</TextBlock>
+                            <TextBlock>Resets the camera back to its original position.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="OrderBtn" Content="ORDER" Height="30" Width="70" HorizontalAlignment="Right" VerticalAlignment="Top" Click = "OrderBtn_OnClick">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Order button</TextBlock>
+                            <TextBlock>If you have all the mandatory parts you can order your model.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="ModelDetailsBtn" Content="&#xE292; Get Model Details" Background="FloralWhite" FontFamily="Segoe UI Symbol"  Height="30" Width="120" HorizontalAlignment="Right" VerticalAlignment="Top" Click="ModelDetailsBtn_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Model details</TextBlock>
+                            <TextBlock>Click to get the price and delivery time for the current model.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Grid Name="myGrid">
+                <ListBox IsSynchronizedWithCurrentItem="True"  x:Name="Partslb" HorizontalAlignment="Left" Height="222"  VerticalAlignment="Top" Width="100" SelectionChanged="Partslb_SelectionChanged">
+                <ListBox.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                                <TextBlock FontWeight="Bold">Parts categories</TextBlock>
+                                <TextBlock>Here is the list of all part categories.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </ListBox.ToolTip>
+                </ListBox>
+                
+                <ListView HorizontalContentAlignment="Stretch" x:Name="modelslb" HorizontalAlignment="Right" Height="222" VerticalAlignment="Top" Width="100" SelectionChanged="modelslb_SelectionChanged">
+                    <ListView.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Parts in selected category</TextBlock>
+                                <TextBlock>Note that some of the parts may be restricted.</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </ListView.ToolTip>
+                </ListView>
+            </Grid>
+            <Grid x:Name="BtnGrid">
+                <Button x:Name="RotateLeft" Content="&#xE112;" FontFamily="Segoe UI Symbol" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" PreviewMouseLeftButtonDown="RotateLeft_PreviewMouseLeftButtonDown">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Rotate left</TextBlock>
+                                <TextBlock>Click to rotate the model.</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse Stroke="Black"
+                         StrokeThickness="2">
+                                    <Ellipse.Fill>
+                                        <RadialGradientBrush>
+                                            <GradientStop Offset="1"
+                                          Color="CornflowerBlue" />
+                                            <RadialGradientBrush.Transform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleY="0.65" />
+                                                </TransformGroup>
+                                            </RadialGradientBrush.Transform>
+                                        </RadialGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="RotateRight" Content="&#xE111;" FontFamily="Segoe UI Symbol" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="30" PreviewMouseLeftButtonDown="RotateRight_PreviewMouseLeftButtonDown">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Rotate right</TextBlock>
+                                <TextBlock>Rotate the model to the right.</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse Stroke="Black"
+                         StrokeThickness="2">
+                                    <Ellipse.Fill>
+                                        <RadialGradientBrush>
+                                            <GradientStop Offset="1"
+                                          Color="CornflowerBlue" />
+                                            <RadialGradientBrush.Transform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleY="0.65" />
+                                                </TransformGroup>
+                                            </RadialGradientBrush.Transform>
+                                        </RadialGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid x:Name="ZoomGrid">
+                <Button x:Name="ZoomIn" Content="&#xE12E;" FontFamily="Segoe UI Symbol" FontSize="20" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" PreviewMouseLeftButtonDown="ZoomIn_PreviewMouseLeftButtonDown">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Zoom in</TextBlock>
+                                <TextBlock>Click to zoom in to the model.</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse Stroke="Black"
+                         StrokeThickness="2">
+                                    <Ellipse.Fill>
+                                        <RadialGradientBrush>
+                                            <GradientStop Offset="1"
+                                          Color="CornflowerBlue" />
+                                            <RadialGradientBrush.Transform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleY="0.65" />
+                                                </TransformGroup>
+                                            </RadialGradientBrush.Transform>
+                                        </RadialGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="ZoomOut" Content="&#xE1A4;" FontFamily="Segoe UI Symbol" FontSize="20" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" PreviewMouseLeftButtonDown="ZoomOut_PreviewMouseLeftButtonDown">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold">Zoom out</TextBlock>
+                                <TextBlock>Click to zoom out from the model.</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse Stroke="Black"
+                         StrokeThickness="2">
+                                    <Ellipse.Fill>
+                                        <RadialGradientBrush>
+                                            <GradientStop Offset="1"
+                                          Color="CornflowerBlue" />
+                                            <RadialGradientBrush.Transform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleY="0.65" />
+                                                </TransformGroup>
+                                            </RadialGradientBrush.Transform>
+                                        </RadialGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <GroupBox x:Name="GroupBoxBot"  Header="Description" HorizontalAlignment="Left"  VerticalAlignment="Bottom">
+                <Grid>
+                    <Image x:Name="Description_Photo" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="Descriprion_Header" Foreground="White" FontSize="15" FontWeight="Bold"/>
+                    <StackPanel Orientation="Vertical" x:Name="Description_panelText">
+                        <TextBlock x:Name="Description_Text" TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="White" />
+                    </StackPanel>
+                    <Button x:Name="AddToBtn" FontFamily="Segoe UI Symbol" FontSize="15" Content="&#xE105; Add to selected parts" VerticalAlignment="Center" HorizontalAlignment="Right" Click="AddToBtn_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Add part</TextBlock>
+                                    <TextBlock>Click to add this part to the model.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button x:Name="Cancel_Part" FontFamily="Segoe UI Symbol" FontSize="15" Content="&#xE10E; Cancel" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Cancel_Part_OnClick">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Cancel part</TextBlock>
+                                    <TextBlock>Click to cancel the part.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</Window>
